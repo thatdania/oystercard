@@ -5,8 +5,8 @@
 | Object           | Messages      | Tests                   |
 |:----------------:|:-------------:|:-----------------------:|
 | card             | want money    | balance is 0 by default |
-| public transport | use           |  
-| zebra stripes    | are neat      |  
+| card             | add money     |  
+| card             | max limit     |  £ 90
 
 
 ### Issue Comments:
