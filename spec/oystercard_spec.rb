@@ -2,7 +2,12 @@
 require './lib/oystercard.rb'
 
 describe Oystercard do
-  it 'Sets new card to have a default balance of 0' do
-  expect(Oystercard.new.balance).to eq 0 
+
+  describe "#balance" do
+      it 'Sets new card to have a default balance of 0' do
+        expect(subject.balance).to eq 0
+      end
+
+
   end
 end
