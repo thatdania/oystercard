@@ -18,8 +18,15 @@ describe Oystercard do
 
     it 'raises error' do
       card = Oystercard.new 90
-      expect{card.top_up(1)}.to raise_error 'Oystercard has reached the limit'
+      expect{card.top_up(1)}.to raise_error 'Oystercard limit'
     end
 
+    # it ' returns remaining top up limit' do
+    #   expect(subject.top_up)
+    # end
+    # it 'returns how much left for top up' do
+    #   card = Oystercard.new 50
+    #   expect(card.top_up(60)).to eq "You can only top up 40"
+    # end
   end
 end
