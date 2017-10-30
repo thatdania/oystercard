@@ -1,5 +1,14 @@
 # oystercard
 
+### Domain Models
+
+| Object           | Messages      | Tests                   |
+|:----------------:|:-------------:|:-----------------------:|
+| card             | want money    | balance is 0 by default |
+| public transport | use           |  
+| zebra stripes    | are neat      |  
+
+
 ### Issue Comments:
 
 NameError : Uninitialized constant Oystercard
