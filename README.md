@@ -5,7 +5,7 @@
 | Object           | Messages      | Tests                   |
 |:----------------:|:-------------:|:-----------------------:|
 | card             | want money    | balance is 0 by default |
-| public transport | use           |  
+| card             | add money     |  
 | zebra stripes    | are neat      |  
 
 
