@@ -55,13 +55,19 @@ describe Oystercard do
 
      it "Updates @in_journey to be false" do
        topped_up_card
-       subject.touch_out
+       subject.touch_out("Aldgate East")
        expect(subject.in_journey).to eq false
      end
 
      it "Deducts MINIMUM_FARE from @balance" do
        topped_up_card
-       expect { subject.touch_out }.to change{ subject.balance }.from(2).to(1)
+       expect { subject.touch_out("Aldgate East") }.to change{ subject.balance }.from(2).to(1)
+     end
+
+     it "Updates @exit_station when touching out" do
+       topped_up_card
+       subject.touch_out("Aldgate East")
+       expect(subject.exit_station).to eq "Aldgate East"
      end
    end
 end
