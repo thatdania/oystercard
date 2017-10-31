@@ -20,13 +20,14 @@ MAXIMUM_BALANCE = 90
 
   def touch_in(station)
     raise "Sorry insufficient funds available" if insufficient_funds?
-    in_journey?(true)
-    @entry_station = station 
+    @entry_station = station
+    in_journey?
   end
 
   def touch_out
-    in_journey?(false)
+    @entry_station = nil
     deduct(MINIMUM_FARE)
+    in_journey?
   end
 
   private
@@ -35,8 +36,8 @@ MAXIMUM_BALANCE = 90
     @balance + value > MAXIMUM_BALANCE
   end
 
-  def in_journey?(status = false)
-    @in_journey = status
+  def in_journey?
+    @entry_station != nil ? @in_journey = true : @in_journey = false
   end
 
   def insufficient_funds?

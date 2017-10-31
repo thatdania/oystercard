@@ -63,5 +63,12 @@ describe Oystercard do
        topped_up_card
        expect { subject.touch_out }.to change{ subject.balance }.from(2).to(1)
      end
+
+     it "Resets @entry_station to nil" do
+       topped_up_card
+       subject.touch_in("Kings Cross")
+       subject.touch_out
+       expect(subject.entry_station).to eq nil
+     end
    end
 end
