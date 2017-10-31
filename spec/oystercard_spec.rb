@@ -16,7 +16,7 @@ describe Oystercard do
 
     it {is_expected.to respond_to{:top_up}.with(1).argument}
 
-    it 'raises error' do
+    it 'Does not allow @balance to be over 90' do
       card = Oystercard.new 90
       expect{card.top_up(1)}.to raise_error 'Oystercard has reached the limit'
     end
@@ -37,13 +37,19 @@ describe Oystercard do
 
    describe '#touch_in' do
      it "Updates @in_journey to be true" do
+       subject.top_up(2)
        subject.touch_in
        expect(subject.in_journey).to eq true
+     end
+
+     it "@balance must be at least 1 to touch_in" do
+       expect{subject.touch_in}.to raise_error "Sorry insufficient funds available"
      end
    end
 
    describe '#touch_out' do
      it "Updates @in_journey to be false" do
+       subject.top_up(2)
        subject.touch_in
        subject.touch_out
        expect(subject.in_journey).to eq false

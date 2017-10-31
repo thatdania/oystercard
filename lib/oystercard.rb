@@ -5,7 +5,7 @@ attr_reader :balance, :in_journey
 
 DEFAULT_BALANCE = 0
 
-  def initialize (balance = DEFAULT_BALANCE)
+  def initialize(balance = DEFAULT_BALANCE)
    @balance = balance
    @in_journey = in_journey?
   end
@@ -20,6 +20,7 @@ DEFAULT_BALANCE = 0
   end
 
   def touch_in
+    raise "Sorry insufficient funds available" if @balance < 1 
     in_journey?(true)
   end
 
