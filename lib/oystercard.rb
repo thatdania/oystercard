@@ -19,14 +19,22 @@ DEFAULT_BALANCE = 0
     @balance -= cost
   end
 
+  def touch_in
+    in_journey?(true)
+  end
+
+  def touch_out
+    in_journey?(false)
+  end
+
   private
 
   def exceed?(value)
     @balance + value > 90
   end
 
-  def in_journey?
-    false
+  def in_journey?(status = false)
+    @in_journey = status
   end
 
 end
