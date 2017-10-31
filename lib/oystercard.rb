@@ -29,12 +29,9 @@ MAXIMUM_BALANCE = 90
   def touch_out(station)
     deduct(MINIMUM_FARE)
     @exit_station = station
+    update_journey_history
     @entry_station = nil
     in_journey?
-  end
-
-  def journey_history
-    @journey_history << {@entry_station => @exit_station}
   end
 
 
@@ -54,6 +51,10 @@ MAXIMUM_BALANCE = 90
 
   def deduct(cost)
     @balance -= cost
+  end
+
+  def update_journey_history
+    @journey_history << {@entry_station => @exit_station}
   end
 
 end
