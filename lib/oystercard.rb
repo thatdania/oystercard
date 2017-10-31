@@ -31,6 +31,10 @@ MAXIMUM_BALANCE = 90
     @exit_station = station
   end
 
+  def journey_history
+    
+  end
+
   private
 
   def exceed?(value)
