@@ -28,4 +28,10 @@ describe Oystercard do
       expect(card.deduct(2)). to eq 18
     end
   end
+
+   describe "#in_journey?" do
+     it "Journey status should be false by default" do
+       expect(subject.in_journey?).to eq false
+     end
+   end
 end

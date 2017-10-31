@@ -15,7 +15,11 @@ DEFAULT_BALANCE = 0
   end
 
   def deduct(cost)
-    @balance -= cost 
+    @balance -= cost
+  end
+
+  def in_journey?
+    false
   end
 
   private
