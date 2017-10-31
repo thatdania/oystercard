@@ -79,7 +79,10 @@ describe Oystercard do
    end
 
    describe '#journey_history' do
-     it "Checks if all past journeys are saved " do
+     it "Checks that the list of journeys is empty by default" do
+       expect(subject.journey_history).to eq []
+     end
+     it "Touching in and out should create one journey" do
        subject.top_up(2)
        subject.touch_in("Kings Cross")
        subject.touch_out("Aldgate East")
