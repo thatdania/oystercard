@@ -1,32 +1,41 @@
-
 require './lib/oystercard.rb'
 
-describe Oystercard do
+class Oystercard
+LIMIT = 90
+MINIMUM_FARE = 1
+  attr_reader :balance
 
-  describe "#balance" do
-      it 'Sets new card to have a default balance of 0' do
-        expect(subject.balance).to eq 0
-      end
-    end
+  def initialize(balance = 0)
+    @balance = balance
+    @state = :not_in_use
+  end
 
-  describe "#top_up" do
-    it 'Adds money to card' do
-    expect{subject.top_up(1)}.to change{subject.balance }.by(1)
-    end
+  def top_up(amount)
+    raise error_top_up if @balance + amount > LIMIT
+    @balance += amount
+  end
 
-    it {is_expected.to respond_to{:top_up}.with(1).argument}
+  def error_top_up
+    "You are exceeding the limit in your card. You can top_up only #{LIMIT - @balance}"
+  end
 
-    it 'raises error' do
-      card = Oystercard.new 90
-      expect{card.top_up(1)}.to raise_error 'Oystercard limit'
-    end
+  def touch_in
+    raise 'Insufficient balance for travel' if @balance < MINIMUM_FARE
+    @state = :in_use
+  end
 
-    # it ' returns remaining top up limit' do
-    #   expect(subject.top_up)
-    # end
-    # it 'returns how much left for top up' do
-    #   card = Oystercard.new 50
-    #   expect(card.top_up(60)).to eq "You can only top up 40"
-    # end
+  def touch_out
+    deduct if @state == :in_use
+    @state = :not_in_use
+  end
+
+  def in_journey?
+    @state == :in_use
+  end
+
+  private
+
+  def deduct
+    @balance -= MINIMUM_FARE
   end
 end
