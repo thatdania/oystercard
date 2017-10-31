@@ -31,7 +31,7 @@ describe Oystercard do
 
    describe "#in_journey?" do
      it "Journey status should be false by default" do
-       expect(subject.in_journey?).to eq false
+       expect(subject.in_journey).to eq false
      end
    end
 end
