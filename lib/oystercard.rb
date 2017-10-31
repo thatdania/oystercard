@@ -1,37 +1,25 @@
+
 class Oystercard
-  attr_reader :balance, :maximum_amount, :in_journey
-  attr_writer :in_journey
-  MAXIMUM_AMOUNT = 90
 
+attr_accessor :balance
 
-  def initialize
-    @balance = 0
-    @maximum_amount = MAXIMUM_AMOUNT
-    @in_journey = false
+DEFAULT_BALANCE = 0
+
+  def initialize (balance = DEFAULT_BALANCE)
+   @balance = balance
   end
 
-  def top_up(amount)
-    if exceed?(amount)
-      raise "Sorry, the balance on your Oyster card can not exceed #{MAXIMUM_AMOUNT}."
-    end
-    @balance += amount
+def top_up(value)
+  if @balance > 90 || @balance + value > 90
+    raise 'Oystercard has reached the limit'
+  else
+    @balance = @balance + value
   end
+end
 
-  def deduct(cost)
-    @balance -= cost
-  end
+# def balance(value = DEFAULT_BALANCE)
+#   @value
+# end
 
-  def touch_in
-    @in_journey = true
-  end
 
-  def touch_out
-    @in_journey = false
-  end
-
-  private
-
-  def exceed?(amount)
-    @balance + amount > MAXIMUM_AMOUNT ? true : false
-  end
 end

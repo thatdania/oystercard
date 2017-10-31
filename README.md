@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Oystercard Challenge
 
 This week's challenge will start with going back over the basics we covered last week in Boris Bikes, giving you the chance to reinforce what you learned last week. You'll then be challenged to build a more complex system which should really stretch your skills in Ruby, TDD and object-oriented design.
@@ -112,3 +113,25 @@ I need to have the correct fare calculated
   16. [Calculating the fare between zones](16_fare_for_zones.md)
 
 ## [Example Code](walkthroughs/example_code)
+=======
+# oystercard
+
+### Domain Models
+
+| Object           | Messages      | Tests                   |
+|:----------------:|:-------------:|:-----------------------:|
+| card             | want money    | balance is 0 by default |
+| card             | add money     |  
+<<<<<<< HEAD
+| card             | max limit     |  £ 90
+=======
+| zebra stripes    | are neat      |  
+>>>>>>> c99dd74e31e668f212f4c5d08c91c05af57eb33b
+
+
+### Issue Comments:
+
+NameError : Uninitialized constant Oystercard
+File path: ./spec/oystercard_spec.rb
+Line number: 3
+>>>>>>> 340bcf2f28cc9631bb32e24d265b4c780710e6a3
