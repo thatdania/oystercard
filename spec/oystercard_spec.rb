@@ -20,6 +20,12 @@ describe Oystercard do
       card = Oystercard.new 90
       expect{card.top_up(1)}.to raise_error 'Oystercard has reached the limit'
     end
+  end
 
+  describe "#deduct" do
+    it "Deducts money from a card" do
+      card = Oystercard.new 20
+      expect(card.deduct(2)). to eq 18
+    end
   end
 end
