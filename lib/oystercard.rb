@@ -9,17 +9,15 @@ DEFAULT_BALANCE = 0
    @balance = balance
   end
 
-def top_up(value)
-  if @balance > 90 || @balance + value > 90
-    raise 'Oystercard has reached the limit'
-  else
-    @balance = @balance + value
+  def top_up(value)
+    raise 'Oystercard has reached the limit' if exceed?(value)
+    @balance += value
   end
-end
 
-# def balance(value = DEFAULT_BALANCE)
-#   @value
-# end
+  private
 
+  def exceed?(value)
+    @balance + value > 90
+  end
 
 end
