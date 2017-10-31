@@ -22,13 +22,6 @@ describe Oystercard do
     end
   end
 
-  describe "#deduct" do
-    it "Deducts money from a card" do
-      card = Oystercard.new 20
-      expect(card.deduct(2)). to eq 18
-    end
-  end
-
    describe "#in_journey?" do
      it "Journey status should be false by default" do
        expect(subject.in_journey).to eq false
@@ -48,11 +41,22 @@ describe Oystercard do
    end
 
    describe '#touch_out' do
-     it "Updates @in_journey to be false" do
+     let (:topped_up_card) do
        subject.top_up(2)
        subject.touch_in
+     end
+
+     it "Updates @in_journey to be false" do
+       topped_up_card
        subject.touch_out
        expect(subject.in_journey).to eq false
+     end
+
+     it "Deducts MINIMUM_FARE from @balance" do
+       topped_up_card
+      #  subject.top_up(2)
+      #  subject.touch_in
+       expect { subject.touch_out }.to change{ subject.balance }.from(2).to(1)
      end
    end
 end
