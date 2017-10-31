@@ -31,19 +31,26 @@ describe Oystercard do
    describe '#touch_in' do
      it "Updates @in_journey to be true" do
        subject.top_up(2)
-       subject.touch_in
+       subject.touch_in("Kings Cross")
        expect(subject.in_journey).to eq true
      end
 
      it "@balance must be at least 1 to touch_in" do
-       expect{subject.touch_in}.to raise_error "Sorry insufficient funds available"
+       expect{subject.touch_in("Kings Cross")}.to raise_error "Sorry insufficient funds available"
      end
+
+     it "Updates @entry_station when touching in " do
+       subject.top_up(2)
+       subject.touch_in("Kings Cross")
+       expect(subject.entry_station).to eq "Kings Cross"
+     end
+
    end
 
    describe '#touch_out' do
      let (:topped_up_card) do
        subject.top_up(2)
-       subject.touch_in
+       subject.touch_in("Kings Cross")
      end
 
      it "Updates @in_journey to be false" do
@@ -54,8 +61,6 @@ describe Oystercard do
 
      it "Deducts MINIMUM_FARE from @balance" do
        topped_up_card
-      #  subject.top_up(2)
-      #  subject.touch_in
        expect { subject.touch_out }.to change{ subject.balance }.from(2).to(1)
      end
    end
