@@ -9,9 +9,13 @@ DEFAULT_BALANCE = 0
    @balance = balance
   end
 
-  def top_up(value)
-    raise 'Oystercard has reached the limit' if exceed?(value)
-    @balance += value
+  def top_up(amount)
+    raise 'Oystercard has reached the limit' if exceed?(amount)
+    @balance += amount
+  end
+
+  def deduct(cost)
+    @balance -= cost 
   end
 
   private
