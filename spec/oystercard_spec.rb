@@ -69,6 +69,13 @@ describe Oystercard do
        subject.touch_out("Aldgate East")
        expect(subject.exit_station).to eq "Aldgate East"
      end
+
+      it "Resets @entry_station to nil" do
+        topped_up_card
+        subject.touch_in("Kings Cross")
+        subject.touch_out("Aldgate East")
+        expect(subject.entry_station).to eq nil
+      end
    end
 
    describe '#journey_history' do
@@ -77,13 +84,6 @@ describe Oystercard do
        subject.touch_in("Kings Cross")
        subject.touch_out("Aldgate East")
        expect(subject.journey_history).to eq ["Kings Cross" => "Aldgate East"]
-     end
-
-     it "Resets @entry_station to nil" do
-       topped_up_card
-       subject.touch_in("Kings Cross")
-       subject.touch_out
-       expect(subject.entry_station).to eq nil
      end
    end
 end
