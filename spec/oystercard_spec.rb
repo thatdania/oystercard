@@ -46,20 +46,7 @@ describe Oystercard do
        expect { subject.touch_out("Aldgate East") }.to change{ subject.balance }.from(2).to(1)
      end
 
-      it "Resets @entry_station to nil" do
-        topped_up_card
-        subject.touch_in("Kings Cross")
-        subject.touch_out("Aldgate East")
-        expect(subject.entry_station).to eq nil
-      end
    end
 
-   describe '#journey_history' do
-     it "Checks if all past journeys are saved " do
-       subject.top_up(2)
-       subject.touch_in("Kings Cross")
-       subject.touch_out("Aldgate East")
-       expect(subject.journey_history).to eq ["Kings Cross" => "Aldgate East"]
-     end
-   end
+
 end

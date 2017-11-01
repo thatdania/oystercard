@@ -2,7 +2,7 @@ require_relative 'journey'
 
 class Oystercard
 
-attr_reader :balance, :in_journey, :entry_station, :exit_station, :journey_history
+attr_reader :balance
 
 DEFAULT_BALANCE = 0
 MINIMUM_FARE = 1
@@ -11,7 +11,6 @@ MAXIMUM_BALANCE = 90
   def initialize(balance = DEFAULT_BALANCE)
    @balance = balance
    @journey = Journey.new
-   @journey_history = []
   end
 
   def top_up(amount)
@@ -26,9 +25,7 @@ MAXIMUM_BALANCE = 90
 
   def touch_out(station)
     deduct(@journey.fare)
-    return_station = @journey.finish_journey(station)
-    update_journey_history
-    return_station
+    @journey.finish_journey(station)
   end
 
   private
@@ -43,10 +40,6 @@ MAXIMUM_BALANCE = 90
 
   def deduct(cost)
     @balance -= cost
-  end
-
-  def update_journey_history
-    @journey_history << @journey.history_list
   end
 
 end
