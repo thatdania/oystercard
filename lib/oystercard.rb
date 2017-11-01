@@ -25,7 +25,7 @@ MAXIMUM_BALANCE = 90
   end
 
   def touch_out(station)
-    deduct(MINIMUM_FARE)
+    deduct(@journey.fare)
     return_station = @journey.finish_journey(station)
     update_journey_history
     return_station

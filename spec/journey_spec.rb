@@ -24,4 +24,30 @@ describe Journey do
     end
   end
 
+  context 'When paying for the journey' do
+    it 'returns MINIMUM_FARE if on a complete trip' do
+    subject.start_journey("Kings Cross")
+    subject.finish_journey("Aldgate East")
+    expect(subject.fare).to eq(1)
+    end
+
+    it 'returns penalty fare if entry_station is not nil in a new journey' do
+      subject.start_journey("Kings Cross")
+      subject.start_journey("Kings Cross")
+      expect(subject.fare).to eq(6)
+    end
+
+    it 'returns penalty fare if exit_station is not nil finishing a journey' do
+      subject.start_journey("Kings Cross")
+      subject.finish_journey("Aldgate East")
+      subject.finish_journey("Aldgate East")
+      expect(subject.fare).to eq(6)
+    end
+
+    it 'returns penalty fare if exit_station is not nil finishing' do
+      subject.finish_journey("Aldgate East")
+      expect(subject.fare).to eq(6)
+    end
+  end
+
 end
