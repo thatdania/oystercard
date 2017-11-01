@@ -1,3 +1,4 @@
+require_relative 'journey'
 
 class Oystercard
 
@@ -9,9 +10,7 @@ MAXIMUM_BALANCE = 90
 
   def initialize(balance = DEFAULT_BALANCE)
    @balance = balance
-   @in_journey = in_journey?
-   @entry_station = nil
-   @exit_station = nil
+   @journey = Journey.new
    @journey_history = []
   end
 
@@ -22,27 +21,20 @@ MAXIMUM_BALANCE = 90
 
   def touch_in(station)
     raise "Sorry insufficient funds available" if insufficient_funds?
-    @entry_station = station
-    in_journey?
+    @journey.start_journey(station)
   end
 
   def touch_out(station)
     deduct(MINIMUM_FARE)
-    @exit_station = station
+    return_station = @journey.finish_journey(station)
     update_journey_history
-    @entry_station = nil
-    in_journey?
+    return_station
   end
-
 
   private
 
   def exceed?(value)
     @balance + value > MAXIMUM_BALANCE
-  end
-
-  def in_journey?
-    @entry_station != nil ? @in_journey = true : @in_journey = false
   end
 
   def insufficient_funds?
@@ -54,7 +46,7 @@ MAXIMUM_BALANCE = 90
   end
 
   def update_journey_history
-    @journey_history << {@entry_station => @exit_station}
+    @journey_history << @journey.history_list
   end
 
 end

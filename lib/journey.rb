@@ -15,6 +15,7 @@ attr_reader :entry_station, :exit_station, :history_list
     @exit_station = station
     history
     @entry_station = nil
+    @exit_station 
   end
 
   def history
