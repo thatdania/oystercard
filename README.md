@@ -1,4 +1,5 @@
-# oystercard
+
+# oystercard [![Build Status](https://travis-ci.org/thatdania/oystercard.svg?branch=master)](https://travis-ci.org/thatdania/oystercard) [![Coverage Status](https://coveralls.io/repos/github/thatdania/oystercard/badge.svg?branch=master)](https://coveralls.io/github/thatdania/oystercard?branch=master)
 
 ### Domain Models
 
