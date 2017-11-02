@@ -5,11 +5,15 @@
 
 ### Approach
 
-In my journey of creating an Oyster-card, I had first designed and created Domain Models to specify what is the focus of each function the oyster card has. Whilst pairing with three amazing coders, we have split the methods using the Single Responsibility Principle along with the classes (The Journey, The Oystercard, the Station and the Journey Log). Each method
-should have three lines of less as we used delegation, for different function.
+In my journey of creating an Oyster-card, I had first designed and created Domain Models to specify what is the focus of each function the oyster card has. Whilst pairing with three amazing coders, we have split the methods using the Single Responsibility Principle along with the classes (The Journey, The Oystercard, the Station and the Journey Log). Each methodshould have three lines of less as we used delegation, for a different function.
 
 The code should be clean and easy to read although it's a lot to intake.
 Tribute to my great pair partners to help me finish my first challenge.
+@Yolantele
+@peterwdj
+@cristhiandas
+
+
 Although, we finished, I believe I would have to do this process multiple times for it to sink in.
 
 ### Domain Models
