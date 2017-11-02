@@ -9,9 +9,9 @@ In my journey of creating an Oyster-card, I had first designed and created Domai
 
 The code should be clean and easy to read although it's a lot to intake.
 Tribute to my great pair partners to help me finish my first challenge.
-@Yolantele
-@peterwdj
-@cristhiandas
+- @Yolantele
+- @peterwdj
+- @cristhiandas
 
 
 Although, we finished, I believe I would have to do this process multiple times for it to sink in.
